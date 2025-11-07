@@ -1,0 +1,403 @@
+/* ============================
+   General Reset & Body Styles
+   ============================ */
+
+/* Universal box model and reset margins/padding */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Poppins", sans-serif;
+}
+
+/* Body setup: background and font */
+.body {
+  background: url("./img/bg.png");
+  background-color: #fbf2e8;
+  font-family: "dmsans", sans-serif;
+  padding: 0;
+  margin: 0;
+}
+
+
+/* ============================
+   Top Navbar Styles
+   ============================ */
+
+/* Navbar container */
+.navTop {
+  background: linear-gradient(135deg, #52eb8b 0%, #ffb938 50%, #52eb8b 100%);
+  display: flex;
+  align-items: center;
+  justify-content: space-between; /* Logo left, admin right */
+  padding: 14px 40px;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.15);
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+
+/* Navbar logo */
+.navTop img {
+  width: 40px;
+  height: 40px;
+  border-radius: 8px;
+}
+
+/* Navigation list styles */
+.navList {
+  list-style: none;
+  display: flex;
+  gap: 25px;
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  flex-direction: row;
+}
+
+/* Navigation links */
+.navList li a {
+  text-decoration: none;
+  color: white;
+  font-weight: 500;
+  transition: 0.3s;
+  padding: 6px 10px;
+  border-radius: 6px;
+}
+
+.navList li a:hover {
+  background-color: rgba(255,255,255,0.25);
+  transform: translateY(-2px);
+}
+
+/* Admin button */
+.admin {
+  color: white;
+  background-color: rgba(255,255,255,0.25);
+  padding: 8px 14px;
+  position: absolute;
+  right: 40px;
+  border-radius: 8px;
+  font-weight: 600;
+  transition: 0.3s;
+  cursor: pointer;
+}
+
+.admin:hover {
+  background-color: white;
+  color: #52eb8b;
+  transform: translateY(-2px);
+}
+
+
+/* ============================
+   Main Attendance Section
+   ============================ */
+
+/* Main attendance container */
+.kehadiran {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 70vh;
+  margin: 0;
+  padding: 20px;
+  box-sizing: border-box;
+}
+
+/* Row of attendance input items */
+.Item {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  width: 100%;
+  max-width: 800px;
+  margin-bottom: 20px;
+}
+
+.imgCapture {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 100%;
+  max-width: 200px;
+  margin-bottom: 20px;
+}
+
+/* Individual attendance input block */
+.kehadiranItem {
+  display: flex;
+  flex-direction: column;
+  width: 46%;
+}
+.kehadiranStafItem {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+/* Attendance input field */
+.isiMasa,
+.selectDatang {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  box-sizing: border-box;
+  font-size: 14px;
+}
+
+/* Attendance display card */
+.isiKehadiran {
+  background-color: white;
+  padding: 30px;
+  border-radius: 15px;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+  text-align: left;
+  transition: transform 0.3s;
+}
+
+.isiKehadiran:hover {
+  transform: translateY(-5px);
+}
+
+.form {
+  display: flex;
+  flex-direction: row;
+  gap: 20px;
+}
+
+/* ============================
+   Button Styles
+   ============================ */
+
+/* General buttons */
+button, button[type="submit"] {
+  width: 100%;
+  padding: 10px;
+  background: linear-gradient(90deg, #52eb8b, #2f8849);
+  border: none;
+  border-radius: 8px;
+  color: white;
+  font-weight: 600;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+/* Button hover effect */
+button:hover,
+button[type="submit"]:hover {
+  background-color: white;
+  color: #52eb8b;
+  transform: translateY(-2px);
+  border: 1px solid transparent;
+  background-image: linear-gradient(#fff, #fff), linear-gradient(90deg, #52eb8b, #2f8849);
+  background-origin: padding-box, border-box;
+  background-clip: padding-box, border-box;
+  box-shadow: none;
+  outline: none;
+}
+
+
+/* ============================
+   Headings
+   ============================ */
+
+/* Main heading */
+h1 {
+  background: linear-gradient(90deg, #52eb8b, #2f8849);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  color: transparent;
+  font-size: 30px;
+  margin: 40px 0 20px;
+  text-shadow: 0 2px 5px rgba(0,0,0,0.1);
+  text-align: center;
+}
+
+/* Section heading inside attendance block */
+.isiKehadiran h2 {
+  font-size: 24px;
+  background: linear-gradient(90deg, #52eb8b, #2f8849);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  color: transparent;
+  margin: 0;
+}
+
+.form h3 {
+  color: #555;
+  font-size: 16px;
+  margin-bottom: 5px;
+  margin-top: 15px;
+}
+
+/* Sub-headings */
+h2 {
+  color: #ffffff;
+  font-size: 20px;
+  margin-bottom: 30px;
+  text-align: center;
+}
+
+h3 {
+  color: #555;
+  font-size: 16px;
+  margin-bottom: 5px;
+  margin-top: 0px;
+}
+
+
+/* ============================
+   Form and Input Styles
+   ============================ */
+
+/* Text input fields */
+input[type="text"] {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 15px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  transition: border-color 0.3s;
+}
+
+/* Input/Select/Textarea focus effect */
+input[type="text"]:focus,
+select[type="selectDatang"]:focus,
+textarea:focus {
+  border: 1px solid transparent;
+  background-image: linear-gradient(#fff, #fff), linear-gradient(90deg, #52eb8b, #2f8849);
+  background-origin: padding-box, border-box;
+  background-clip: padding-box, border-box;
+  box-shadow: none;
+  outline: none;
+}
+
+video, canvas {
+  max-width: 100%; 
+  border-radius: 8px;
+  border: 1.5px solid transparent;
+  transform: scaleX(-1);
+  background-image: linear-gradient(#fff, #fff), linear-gradient(90deg, #52eb8b, #2f8849);
+  background-origin: padding-box, border-box;
+  background-clip: padding-box, border-box;
+  outline: none;
+  box-shadow: #555 0px 0px 3px;
+}
+
+.vidComment {
+  font-size: 12px;
+  color: #777;
+  margin-top: 3px;
+  text-align: center;
+}
+/* ============================
+   Link Styles
+   ============================ */
+
+/* Links in paragraphs */
+p a {
+  color: #4e4caf;
+  text-decoration: none;
+}
+
+p a:hover {
+  text-decoration: underline;
+}
+
+
+/* ============================
+   Responsive Styles
+   ============================ */
+
+/* --- Responsive for tablets & smaller devices --- */
+@media (max-width: 768px) {
+  .navTop {
+    flex-direction: row;
+    align-items: center;
+    padding: 20px;
+  }
+
+  .navList {
+    flex-direction: row; /* keep them inline */
+    gap: 15px;
+    position: static;
+    transform: none;
+    justify-content: center;
+    margin-top: 10px;
+  }
+
+  .support-content {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .left-info, .support-form {
+    width: 100%;
+    max-width: 400px;
+  }
+
+  .admin {
+    position: static;
+    margin-top: 10px;
+  }
+}
+
+/* --- Responsive for mobile phones --- */
+@media (max-width: 390px) {
+  .navTop {
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 15px 10px;
+    gap: 10px;
+  }
+
+  .navTop img {
+    width: 35px;
+    height: 35px;
+    margin-bottom: auto;
+  }
+
+  .navList {
+    flex-direction: row;
+    gap: 0px;
+    position: static;
+    transform: none;
+    justify-content: center;
+    align-items: center;
+    margin: auto;
+    font-size: 12px;
+  }
+
+  .navList li a {
+    display: block;
+    padding: 6px 12px;
+    border-radius: 6px;
+  }
+
+  .admin {
+    position: static;
+    margin-top: 6px;
+    font-size: 11px;
+    padding: 6px 12px;
+  }
+
+  h1 {
+    font-size: 6px;
+    margin: 30px 0 15px;
+  }
+
+  .form {
+  flex-direction: column;
+}
+
+  .scanh1 {
+    font-size: 20px;
+  }
+}

@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Scan QR Kehadiran</title>
+  <link rel="stylesheet" href="kehadiran.css">
+
+    <!-- Google Font -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap" rel="stylesheet">
+  
+  <script src="https://unpkg.com/html5-qrcode"></script>
+</head>
+<body class="body">
+  <div class="navTop">
+    <img src="./img/logo/logo1.png" width="30px" height="30px" alt="">
+    <ul class="navList">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="aboutUs.html">About Us</a></li>
+      <li><a href="support.html">Support</a></li>
+    </ul>
+    <span class="admin" onclick="location.href='admin.html';" style="cursor: pointer;">Admin</span>
+  </div>
+  <h1 style="color: #52eb8b; font-style: italic;" class="scanh1">Scan QR Attendance</h1>
+  <div class="kehadiran">
+    <div id="reader" style="width:320px;"></div>
+    <form id="attendanceForm" action="scan_data.php" method="POST" style="display:none;" class="isiKehadiran">
+      <div class="form">
+        <div>
+          <h3>Name</h3>
+          <input type="text" name="nama" id="nama" readonly>
+          <h3>Status</h3>
+          <input type="text" name="status" id="status" readonly>
+          <input type="hidden" name="kelas" id="kelas">
+          <input type="hidden" name="masa" id="masa">
+        </div>
+        <div class="imgCapture">
+          <video id="video" autoplay playsinline></video>
+          <canvas id="canvas" style="display:none;"></canvas>
+          <br>
+          <span class="vidComment">Make sure your face is clear in the picture</span>
+          <span class="vidComment">Look at the camera</span>
+        </div>
+      </div>
+      <button id="capture" type="submit">Submit </button>
+    </form>
+    <div id="scanResult" style="color:#52eb8b;font-size:18px;margin-top:20px;"></div>
+  </div>
+  <script>
+    const video = document.getElementById('video');
+    const canvas = document.getElementById('canvas');
+    const form = document.querySelector('form'); // form already in the page
+
+    navigator.mediaDevices.getUserMedia({ video: true })
+      .then(stream => { video.srcObject = stream; })
+      .catch(err => { alert("Camera access denied or not supported: " + err); });
+
+    form.addEventListener('submit', async function(e) {
+      e.preventDefault(); // stop normal form submit
+
+      // capture image
+      canvas.width = video.videoWidth;
+      canvas.height = video.videoHeight;
+      canvas.getContext('2d').drawImage(video, 0, 0);
+      const imageData = canvas.toDataURL('image/png');
+
+      // collect form fields
+      const payload = {
+        nama: form.elements['nama'].value,
+        kelas: form.elements['kelas'].value,
+        status: form.elements['status'].value,
+        image: imageData
+      };
+
+      try {
+        const resp = await fetch('data1.php', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(payload)
+        });
+        const text = await resp.text();
+        alert(text);
+        // optionally redirect after success:
+        if (resp.ok) window.location.href = 'index.html';
+      } catch (err) {
+        alert('Upload failed: ' + err);
+      }
+    });
+
+    function showForm(data) {
+      // Example QR payload: {"nama":"Ali","status":"Hadir","kelas":"5A","masa":"08:00"}
+      try {
+        const obj = JSON.parse(data);
+        document.getElementById('nama').value = obj.nama || '';
+        document.getElementById('status').value = obj.status || '';
+        document.getElementById('kelas').value = obj.kelas || '';
+        document.getElementById('masa').value = obj.masa || '';
+        document.getElementById('attendanceForm').style.display = 'block';
+        document.getElementById('scanResult').innerText = "Successfully scanned QR. Please press Submit Attendance.";
+      } catch (e) {
+        document.getElementById('scanResult').innerText = "Invalid QR!";
+      }
+    }
+    let html5QrcodeScanner = new Html5QrcodeScanner(
+      "reader", { fps: 10, qrbox: 250 });
+    html5QrcodeScanner.render(function(decodedText, decodedResult) {
+      showForm(decodedText);
+      html5QrcodeScanner.clear(); // Stop scanning after successful scan
+    });
+  </script>
+</body>
+</html>
