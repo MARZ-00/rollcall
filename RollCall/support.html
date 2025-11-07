@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Support</title>
+
+  <!-- Google Font -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="support.css">
+ 
+</head>
+
+<body>
+  <!-- Navigation Bar -->
+  <div class="navTop">
+    <img src="./img/logo/logo1.png" alt="Logo">
+    <ul class="navList">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="aboutUs.html">About Us</a></li>
+      <li><a href="support.html">Support</a></li>
+    </ul>
+    <span class="admin" onclick="location.href='admin.html';">Admin</span>
+  </div>
+
+  <!-- Support Section -->
+  <div class="support-section">
+    <h1>Support</h1>
+    <div class="support-content">
+      <!-- Left Info Card -->
+      <div class="left-info">
+        <p>mfzlproduction@gmail.com<br>0112345678</p>
+        <img src="./img/logo/logo.png" alt="icon">
+        <p>An attendance website helps track and manage attendance easily, saves time and keeps records organized in one secure place.</p>
+      </div>
+
+      <!-- Right Form Card -->
+      <div class="support-form">
+        <div class="form-header">
+          <img src="./img/logo/support1.png" alt="Support Icon">
+          <h2>Contact Support</h2>
+        </div>
+        <form action="data3.php" method="post">
+          <label>Email :</label>
+          <input type="email" name="email" required>
+
+          <label>Reason :</label>
+          <textarea name="reason" rows="5" required></textarea>
+
+          <button type="submit">Submit</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</body>
+</html>
+
